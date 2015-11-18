@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical" tools:context=".MainActivity">
+
+
+
+    <ImageButton
+        android:layout_width="140dp"
+        android:layout_height="136dp"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/play_button"
+        />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_marginTop="60dp"
+        android:layout_width="116dp"
+        android:layout_height="104dp"
+        android:src="@drawable/settings_image"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:id="@+id/credits_button"
+        android:layout_width="139dp"
+        android:layout_height="68dp"
+        android:text="@string/creditos"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"/>
+
+</LinearLayout>

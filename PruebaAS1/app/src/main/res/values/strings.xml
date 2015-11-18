@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">2++</string>
+
+    <string name="hello_world">Hola mundo!</string>
+    <string name="country_prompt">Elige un Idioma</string>
+    <string name="Play">Jugar</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="title_activity_second">SegundaActividad</string>
+    <string name="score">Puntos</string>
+    <string name="sonido">SONIDO</string>
+    <string name="volumen">Volumen   </string>
+    <string name="lenguaje">LENGUAJE</string>
+    <string name="Idioma">Idioma       </string>
+    <string name="atras">Regresar</string>
+    <string name="creditos">Créditos</string>
+    <string name="nivel">Nivel</string>
+    <string name="facil">Fácil</string>
+    <string name="medio">Medio</string>
+    <string name="dificl">Difícil</string>
+    <string-array name="country_arrays">
+        <item>Pais</item>
+        <item>--------------------------------------------</item>
+        <item>Español</item>
+        <item>Frances</item>
+        <item>Ingles</item>
+    </string-array>
+    <string name="title_activity_medio">Medio</string>
+    <string name="title_activity_dificil">dificil</string>
+    <string name="title_activity_final_score">FinalScore</string>
+</resources>
