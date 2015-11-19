@@ -19,8 +19,7 @@
     <string name="medio">Medio</string>
     <string name="dificl">Difícil</string>
     <string-array name="country_arrays">
-        <item>Pais</item>
-        <item>--------------------------------------------</item>
+        <item>Elige un Idioma</item>
         <item>Español</item>
         <item>Frances</item>
         <item>Ingles</item>

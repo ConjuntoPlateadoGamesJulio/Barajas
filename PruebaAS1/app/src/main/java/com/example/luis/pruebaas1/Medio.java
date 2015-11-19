@@ -1,5 +1,6 @@
 package com.example.luis.pruebaas1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +14,9 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Random;
 
 
@@ -27,7 +31,8 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
 
     int rand1, rand2, rand3, rand4, realResp, contScore =0;
     Boolean Unavez = true;
-
+    int score =0,bestScore = 0;
+    String medioFile = "medioScore.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +94,9 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
-                    Score.setText(""+ contScore);
+                    Score.setText("" + contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -105,7 +112,9 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
-                    Score.setText(""+ contScore);
+                    Score.setText("" + contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -122,6 +131,8 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -173,21 +184,51 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
             case 1:
                 //Imprecion de respuestas en los botones.
                 Resp1.setText(""+realResp);
-                Resp2.setText(""+(realResp+rand3));
+                Resp2.setText("" + (realResp + rand3));
                 Resp3.setText("" + (realResp + (rand3 * 2)));
                 break;
 
             case 2:
                 Resp1.setText(""+(realResp+rand3));
-                Resp2.setText(""+realResp);
+                Resp2.setText("" + realResp);
                 Resp3.setText("" + (realResp + (rand3 * 2)));
                 break;
 
             case 3:
                 Resp1.setText(""+(realResp+(rand3*2)));
-                Resp2.setText(""+(realResp+rand3));
+                Resp2.setText("" + (realResp + rand3));
                 Resp3.setText("" + realResp);
                 break;
         }
+    }
+    private void cacheMemory(){
+
+        try {
+            Bundle extras = getIntent().getExtras();
+            FileOutputStream fos = openFileOutput(medioFile, Context.MODE_PRIVATE);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            bestScore = (Integer) extras.get("BestScore");
+            //Toast.makeText(getApplicationContext(),"bestscore: " + bestScore, Toast.LENGTH_SHORT).show();
+            score = getScore();
+            //Toast.makeText(getApplicationContext(),"SCORES: " + score, Toast.LENGTH_SHORT).show();
+            if (score>bestScore){
+                osw.write(score);
+                osw.flush();
+                osw.close();}
+            else {
+                osw.write(bestScore);
+                osw.flush();
+                osw.close();
+            }
+            //Toast.makeText(getApplicationContext(),"score: " + score, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (IOException e){}
+    }
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int score){
+        this.score = score;
     }
 }

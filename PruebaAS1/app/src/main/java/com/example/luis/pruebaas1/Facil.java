@@ -1,5 +1,6 @@
 package com.example.luis.pruebaas1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -12,6 +13,11 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Random;
 
 
@@ -26,6 +32,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
 
     int rand1, rand2, rand3, rand4,nRand, realResp, contScore =0;
     Boolean Unavez = true;
+    int score =0,bestScore = 0;
+    String nameFile = "facilScore.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +100,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -108,6 +118,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -124,6 +136,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    setScore(contScore);
+                    cacheMemory();
                 }
                 //La respuesta era incorrecta
                 else
@@ -155,6 +169,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
     public void Perder(){
         finish();
         Intent perder = new Intent(Facil.this,ScoreFinal.class);
+        perder.putExtra("BestScore",bestScore);
+        perder.putExtra("Score",getScore());
         startActivity(perder);
     }
 
@@ -227,6 +243,38 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
 
     private  void titleActivity(){
         this.setTitle(getResources().getString(R.string.title_activity_second));
+    }
+
+    private void cacheMemory(){
+
+        try {
+            Bundle extras = getIntent().getExtras();
+            FileOutputStream fos = openFileOutput(nameFile, Context.MODE_PRIVATE);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            bestScore = (Integer) extras.get("BestScore");
+            //Toast.makeText(getApplicationContext(),"bestscore: " + bestScore, Toast.LENGTH_SHORT).show();
+            score = getScore();
+            //Toast.makeText(getApplicationContext(),"SCORES: " + score, Toast.LENGTH_SHORT).show();
+            if (score>bestScore){
+                bestScore = score;
+            osw.write(score);
+            osw.flush();
+            osw.close();}
+            else {
+                osw.write(bestScore);
+                osw.flush();
+                osw.close();
+            }
+            //Toast.makeText(getApplicationContext(),"score: " + score, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (IOException e){}
+    }
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int score){
+        this.score = score;
     }
 }
 //Fin :3

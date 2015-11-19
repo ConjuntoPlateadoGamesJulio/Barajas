@@ -119,11 +119,11 @@ public class Configuracion extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
 
-                if (pos == 2) {
+                if (pos == 1) {
                     setLocale("");
-                } else if (pos == 3) {
+                } else if (pos == 2) {
                     setLocale("fr");
-                } else if (pos == 4) {
+                } else if (pos == 3) {
                     setLocale("en");
                 }
 
