@@ -4,13 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:configChanges="locale"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +22,8 @@
         <activity
             android:name=".Facil"
             android:configChanges="locale"
-            android:label="@string/title_activity_second" >
+            android:label="@string/title_activity_second"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +50,9 @@
             android:name=".Creditos"
             android:configChanges="locale"
             android:label="@string/creditos"
-            android:noHistory="true" >
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,7 +66,8 @@
         <activity
             android:name=".Niveles"
             android:configChanges="locale"
-            android:label="@string/nivel" >
+            android:label="@string/nivel"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,15 +76,19 @@
         </activity>
         <activity
             android:name=".Medio"
-            android:label="@string/title_activity_medio" >
+            android:label="@string/title_activity_medio"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Dificil"
-            android:label="@string/title_activity_dificil" >
+            android:label="@string/title_activity_dificil"
+            android:screenOrientation="portrait"
+            >
         </activity>
         <activity
             android:name=".ScoreFinal"
-            android:label="@string/title_activity_final_score" >
+            android:label="@string/title_activity_final_score"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

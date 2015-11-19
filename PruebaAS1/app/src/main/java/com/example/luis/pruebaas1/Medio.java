@@ -32,7 +32,8 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
     int rand1, rand2, rand3, rand4, realResp, contScore =0;
     Boolean Unavez = true;
     int score =0,bestScore = 0;
-    String medioFile = "medioScore.txt";
+    String nameFile = "medioScore.txt";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,8 +164,12 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void Perder(){
+        setScore(contScore);
+        cacheMemory();
         finish();
         Intent perder = new Intent(Medio.this,ScoreFinal.class);
+        perder.putExtra("BestScore",bestScore);
+        perder.putExtra("Score", getScore());
         startActivity(perder);
     }
 
@@ -205,13 +210,14 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
 
         try {
             Bundle extras = getIntent().getExtras();
-            FileOutputStream fos = openFileOutput(medioFile, Context.MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput(nameFile, Context.MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
-            bestScore = (Integer) extras.get("BestScore");
+            bestScore = (Integer) extras.get("MedioScore");
             //Toast.makeText(getApplicationContext(),"bestscore: " + bestScore, Toast.LENGTH_SHORT).show();
             score = getScore();
             //Toast.makeText(getApplicationContext(),"SCORES: " + score, Toast.LENGTH_SHORT).show();
             if (score>bestScore){
+                bestScore = score;
                 osw.write(score);
                 osw.flush();
                 osw.close();}

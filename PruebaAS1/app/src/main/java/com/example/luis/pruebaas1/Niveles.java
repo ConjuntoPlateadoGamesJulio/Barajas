@@ -53,14 +53,14 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             case R.id.buttonMedio:
                 finish();
                 Intent medio = new Intent(Niveles.this,Medio.class);
-                medio.putExtra("BestScore",getScoreMedio());
+                medio.putExtra("MedioScore",getScoreMedio());
                 startActivity(medio);
                 break;
 
             case R.id.buttonDificil:
                 finish();
                 Intent dificil = new Intent(Niveles.this,Dificil.class);
-                dificil.putExtra("BestScore",getScoreDificil());
+                dificil.putExtra("DificilScore",getScoreDificil());
                 startActivity(dificil);
                 break;
 
@@ -117,7 +117,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             FileInputStream fis = openFileInput(dificilFile);
             InputStreamReader isr = new InputStreamReader(fis);
             dificilScore = isr.read();
-            Toast.makeText(getApplicationContext(), "score: " + dificilScore, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "score: " + dificilScore, Toast.LENGTH_SHORT).show();
             setScoreDificil(dificilScore);
         }
         catch (IOException e){

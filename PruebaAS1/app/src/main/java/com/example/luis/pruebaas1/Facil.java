@@ -167,6 +167,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void Perder(){
+        setScore(contScore);
+        cacheMemory();
         finish();
         Intent perder = new Intent(Facil.this,ScoreFinal.class);
         perder.putExtra("BestScore",bestScore);

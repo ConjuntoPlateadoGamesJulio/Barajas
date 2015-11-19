@@ -136,6 +136,7 @@ public class Configuracion extends AppCompatActivity {
         });
 
     }
+    // recibe el lenguaje los cambia en Resources
     public void setLocale(String lang) {
         myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
@@ -148,6 +149,7 @@ public class Configuracion extends AppCompatActivity {
         startActivity(refresh);
 
     }
+    // checkbutton
     private void chekBoxVolume(){
         prefs = getSharedPreferences("mute", 0);
         m = prefs.getBoolean("mute", false);

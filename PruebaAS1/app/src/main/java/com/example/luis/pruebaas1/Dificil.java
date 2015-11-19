@@ -31,8 +31,9 @@ public class Dificil extends AppCompatActivity implements View.OnClickListener{
 
     int rand1, rand2, rand3, rand4, realResp, contScore =0;
     Boolean Unavez = true;
-    String dificilFile = "dificilScore.txt";
     int score =0,bestScore = 0;
+    String nameFile = "dificilScore.txt";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,22 @@ public class Dificil extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()){
 
             case R.id.Resp1:
- 
+                //Presionó el  boton 1
+                if(rand3==1) {
+                    //La respuesta era correcta
+                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    contScore++;
+                    Score.setText("" + contScore);
+                    setScore(contScore);
+                    cacheMemory();
+                }
+                //La respuesta era incorrecta
+                else
+                    Perder();
+
+                GeneracionRandom();
+                Cronometro();
+                break;
             case R.id.Resp2:
                 //Presionó el  boton 2
                 if(rand3==2) {
@@ -115,7 +131,7 @@ public class Dificil extends AppCompatActivity implements View.OnClickListener{
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
-                    Score.setText(""+ contScore);
+                    Score.setText("" + contScore);
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -148,8 +164,12 @@ public class Dificil extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void Perder(){
+        setScore(contScore);
+        cacheMemory();
         finish();
         Intent perder = new Intent(Dificil.this,ScoreFinal.class);
+        perder.putExtra("BestScore",bestScore);
+        perder.putExtra("Score", getScore());
         startActivity(perder);
     }
 
@@ -190,13 +210,14 @@ public class Dificil extends AppCompatActivity implements View.OnClickListener{
 
         try {
             Bundle extras = getIntent().getExtras();
-            FileOutputStream fos = openFileOutput(dificilFile, Context.MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput(nameFile, Context.MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
-            bestScore = (Integer) extras.get("BestScore");
+            bestScore = (Integer) extras.get("DificilScore");
             //Toast.makeText(getApplicationContext(),"bestscore: " + bestScore, Toast.LENGTH_SHORT).show();
             score = getScore();
             //Toast.makeText(getApplicationContext(),"SCORES: " + score, Toast.LENGTH_SHORT).show();
             if (score>bestScore){
+                bestScore = score;
                 osw.write(score);
                 osw.flush();
                 osw.close();}

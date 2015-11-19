@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/facil"
         android:id="@+id/buttonFacil"
-        android:layout_gravity="center_horizontal" />
-
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/facil_imagen"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/medio"
         android:id="@+id/buttonMedio"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/medio_imagen"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dificl"
         android:id="@+id/buttonDificil"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/dificil_imagen"/>
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="96dp"
         android:layout_gravity="center_horizontal"
-        android:background="@android:drawable/ic_menu_revert"
-        android:drawableBottom="@color/accent_material_light"
+        android:drawableLeft="@drawable/back_button"
         />
 </LinearLayout>
