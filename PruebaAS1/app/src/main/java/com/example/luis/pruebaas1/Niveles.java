@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -16,17 +17,17 @@ import java.io.InputStreamReader;
  */
 public class Niveles extends AppCompatActivity implements View.OnClickListener{
 
-    Button facil,medio,dificil,back;
+    ImageButton facil,medio,dificil,back;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel);
         titleActivity();
 
-        facil = (Button) findViewById(R.id.buttonFacil);
-        medio = (Button) findViewById(R.id.buttonMedio);
-        dificil = (Button) findViewById(R.id.buttonDificil);
-        back = (Button) findViewById(R.id.buttonBack);
+        facil = (ImageButton) findViewById(R.id.buttonFacil);
+        medio = (ImageButton) findViewById(R.id.buttonMedio);
+        dificil = (ImageButton) findViewById(R.id.buttonDificil);
+        back = (ImageButton) findViewById(R.id.buttonBack);
 
         facil.setOnClickListener(this);
         medio.setOnClickListener(this);
