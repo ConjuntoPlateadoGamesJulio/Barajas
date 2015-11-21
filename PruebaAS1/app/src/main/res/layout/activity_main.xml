@@ -1,40 +1,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical" tools:context=".MainActivity"
+    android:weightSum="1"
+    android:background="@drawable/main"
     >
-
+    <ImageButton
+        android:id="@+id/salir"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:src="@drawable/salir"
+        android:layout_marginRight="-6dp"
+        android:layout_gravity="right|end"
+        style="?android:attr/borderlessButtonStyle"
+        />
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:src="@drawable/logo_icon"
+        android:layout_marginTop="-36dp"
         />
     <ImageButton
-        android:layout_width="140dp"
-        android:layout_height="136dp"
+        android:layout_width="123dp"
+        android:layout_height="86dp"
         android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:src="@drawable/play_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginTop="20dp"
+        android:textAlignment="gravity"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textPlay"
+        android:text="@string/Play"
+        android:layout_gravity="center_horizontal"
+        android:textSize="29dp"
+        android:textStyle="bold"
         />
 
     <ImageButton
         android:id="@+id/settings_button"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_width="116dp"
-        android:layout_height="104dp"
+        android:layout_height="110dp"
         android:src="@drawable/settings_image"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/abc_search_url_text_normal"/>
     <Button
         android:id="@+id/credits_button"
-        android:layout_width="139dp"
-        android:layout_height="68dp"
+        android:layout_width="149dp"
+        android:layout_height="49dp"
         android:text="@string/creditos"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="30dp"
+        android:textSize="26dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColorLink="@color/highlighted_text_material_light"
+        android:textColor="#e2101193"
+        android:textStyle="bold"
+        />
 
 </LinearLayout>

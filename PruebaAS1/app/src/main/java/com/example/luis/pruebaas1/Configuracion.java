@@ -95,8 +95,8 @@ public class Configuracion extends AppCompatActivity {
                     progress = progresValue;
                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                     if(progress>0){
-                        mute.setChecked(false);
-                    }else {mute.setChecked(true);}
+                        mute.setChecked(true);
+                    }else {mute.setChecked(false);}
                 }
             });
         }
@@ -152,25 +152,25 @@ public class Configuracion extends AppCompatActivity {
     // checkbutton
     private void chekBoxVolume(){
         prefs = getSharedPreferences("mute", 0);
-        m = prefs.getBoolean("mute", false);
+        m = prefs.getBoolean("mute", true);
         mute= (CheckBox) findViewById(R.id.checkBox);
         mute.setChecked(m);
         mute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (buttonView.isChecked() == true) {
-                    m = true;
+                    m = false;
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putBoolean("mute", true);
                     editor.commit();
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 7, 0);
                     Volumen();
                 }
                 if (buttonView.isChecked() == false) {
-                    m = false;
+                    m = true;
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putBoolean("mute", false);
                     editor.commit();
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 7, 0);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
                     Volumen();
                 }
 

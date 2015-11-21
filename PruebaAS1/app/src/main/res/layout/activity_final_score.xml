@@ -8,25 +8,29 @@
 
     <TextView android:text="Best Score" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bestScoreFinal" />
+        android:id="@+id/bestScoreFinal"
+        android:textStyle="bold"
+        />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/sheriff_logo"
-
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/imageView2" />
 
     <TextView
         android:id="@+id/scoreFinal"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
+        android:layout_width="148dp"
+        android:layout_height="55dp"
         android:text="@string/score"
-        android:textSize="30dp"
+        android:textSize="45dp"
         android:layout_above="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,8 +39,9 @@
         android:id="@+id/scoreFinal2"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
+        android:textSize="45dp"
         android:textAlignment="center"
+        android:textStyle="bold"
         />
 
     <TextView
@@ -46,7 +51,54 @@
         android:id="@+id/bestScore"
         android:layout_below="@+id/bestScoreFinal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        />
+    <ImageView
+        android:id="@+id/bala1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/bullet_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/bestScore"
+        android:layout_below="@+id/imageView2"
+        android:layout_toLeftOf="@+id/scoreFinal"
+        android:layout_toStartOf="@+id/scoreFinal" />
+    <ImageView
+        android:id="@+id/bala2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/bullet_icon"
+        android:layout_below="@+id/bestScore"
+        android:layout_toRightOf="@+id/bestScore"
+        android:layout_toStartOf="@+id/scoreFinal"
+        android:layout_above="@+id/scoreFinal2"
+        android:layout_toLeftOf="@+id/scoreFinal" />
+    <ImageView
+        android:id="@+id/bala3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/bullet_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/scoreFinal2"
+        android:layout_toEndOf="@+id/scoreFinal2"
+        android:layout_below="@+id/scoreFinal2" />
+    <ImageView
+        android:id="@+id/bala4"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/bullet_icon"
+        android:layout_alignTop="@+id/scoreFinal"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/scoreFinal"
+        android:layout_above="@+id/scoreFinal2"
+        android:layout_toRightOf="@+id/scoreFinal" />
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:visibility="invisible"
+        android:layout_gravity="center_horizontal" />
 
 </RelativeLayout>

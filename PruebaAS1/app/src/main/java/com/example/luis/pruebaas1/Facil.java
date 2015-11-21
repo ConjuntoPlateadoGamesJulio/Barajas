@@ -97,7 +97,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 //Presionó el  boton 1
                 if(rand3==1 || rand3==4) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
                     setScore(contScore);
@@ -115,7 +115,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 //Presionó el  boton 2
                 if(rand3==2 || rand3==5) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
                     setScore(contScore);
@@ -133,7 +133,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 //Presionó el  boton 3
                 if(rand3==3 || rand3==6) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
                     setScore(contScore);

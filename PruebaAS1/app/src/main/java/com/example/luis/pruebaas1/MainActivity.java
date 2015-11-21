@@ -1,5 +1,6 @@
 package com.example.luis.pruebaas1;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageView image;
     ImageButton boton;
-    ImageButton boton2;
+    ImageButton boton2,cerrar;
     Button boton3;
     EditText text;
     MediaPlayer mediaPlayer;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //hideStatusBar(); // muestra la aplicacion en pantalla completa
         setContentView(R.layout.activity_main);
         titleActivity();
         //mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.sound);
@@ -33,11 +37,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boton = (ImageButton) findViewById(R.id.button);
         boton2 = (ImageButton) findViewById(R.id.settings_button);
         boton3 = (Button) findViewById(R.id.credits_button);
+        cerrar = (ImageButton) findViewById(R.id.salir);
 
         //Esperan el click
         boton.setOnClickListener(this);
         boton2.setOnClickListener(this);
         boton3.setOnClickListener(this);
+        cerrar.setOnClickListener(this);
     }
 
     @Override
@@ -86,10 +92,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent credits = new Intent(MainActivity.this,Creditos.class);
                 startActivity(credits);
                 break;
+            case R.id.salir:
+                finish();
+                break;
         }
     }
     private  void titleActivity(){
         this.setTitle(getResources().getString(R.string.app_name));
     }
 
+    // solo es una prueba por si lo ocupamos
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
+    }
 }

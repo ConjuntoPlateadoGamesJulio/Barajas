@@ -1,26 +1,46 @@
 package com.example.luis.pruebaas1;
 
+import android.media.MediaPlayer;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class ScoreFinal extends ActionBarActivity {
     TextView score, bestScore;
     int bScore = 0,score2 = 0;
+    ImageView bala1,bala2,bala3,bala4;
+    Chronometer cronometro ;
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_score);
         score = (TextView) findViewById(R.id.scoreFinal2);
         bestScore = (TextView) findViewById(R.id.bestScore);
+        bala1 = (ImageView) findViewById(R.id.bala1);
+        bala2 = (ImageView) findViewById(R.id.bala2);
+        bala3 = (ImageView) findViewById(R.id.bala3);
+        bala4 = (ImageView) findViewById(R.id.bala4);
+        bala4.setVisibility(View.INVISIBLE);
+        bala1.setVisibility(View.INVISIBLE);
+        bala2.setVisibility(View.INVISIBLE);
+        bala3.setVisibility(View.INVISIBLE);
+        cronometro = (Chronometer) findViewById(R.id.chronometer) ;
+        mediaPlayer = MediaPlayer.create(ScoreFinal.this, R.raw.shotgun);
+        Cronometro();
         Bundle extras = getIntent().getExtras();
         bScore = (Integer) extras.get("BestScore");
         score2 = (Integer) extras.get("Score");
         score.setText(""+score2);
         bestScore.setText(""+bScore);
+
     }
 
     @Override
@@ -43,5 +63,36 @@ public class ScoreFinal extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void Cronometro() {
+        //Inciar cronometro
+        cronometro.setBase(SystemClock.elapsedRealtime());
+        cronometro.start();
+        mediaPlayer.start();
+        cronometro.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                long elapsedTime = SystemClock.elapsedRealtime() - cronometro.getBase();
+                mediaPlayer.start();
+                if (elapsedTime > 10) {
+                    bala1.setVisibility(View.VISIBLE);
+
+                }
+                if (elapsedTime > 400) {
+                    bala2.setVisibility(View.VISIBLE);
+                }
+                if (elapsedTime > 950) {
+                    bala4.setVisibility(View.VISIBLE);
+                }
+                if (elapsedTime > 1650) {
+                    bala3.setVisibility(View.VISIBLE);
+                    cronometro.stop();
+                    mediaPlayer.stop();
+                }
+            }
+
+        });
     }
 }
