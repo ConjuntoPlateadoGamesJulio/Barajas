@@ -272,9 +272,11 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         }
         catch (IOException e){}
     }
+
     public int getScore(){
         return score;
     }
+
     public void setScore(int score){
         this.score = score;
     }
