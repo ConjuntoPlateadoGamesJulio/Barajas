@@ -3,7 +3,6 @@ package com.example.luis.pruebaas1;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -26,10 +25,10 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
 
     Chronometer cronometro;
 
-    TextView Pregunta,Score,Tiempo;
+    TextView Pregunta,Score;
     Button Resp1,Resp2,Resp3;
 
-    int rand1, rand2, rand3, rand4, realResp, contScore =0;
+    int rand1, rand2, randCase, rand3, realResp,nRand, SignoRand, contScore =0;
     Boolean Unavez = true;
     int score =0,bestScore = 0;
     String nameFile = "medioScore.txt";
@@ -91,11 +90,13 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
 
             case R.id.Resp1:
                 //Presionó el  boton 1
-                if(rand3==1) {
+                if(randCase == 1 || randCase == 4 || randCase == 7) {
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText("" + contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -103,17 +104,17 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
 
             case R.id.Resp2:
                 //Presionó el  boton 2
-                if(rand3==2) {
+                if(randCase == 2 || randCase == 5 || randCase == 8) {
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText("" + contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -121,17 +122,17 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
 
             case R.id.Resp3:
                 //Presionó el  boton 3
-                if(rand3==3) {
+                if(randCase == 3 || randCase == 6 || randCase == 9) {
                     //La respuesta era correcta
                     Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -139,8 +140,6 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
         }
     }
@@ -154,9 +153,9 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedTime = SystemClock.elapsedRealtime() - cronometro.getBase();
-                if (elapsedTime > 5000) {
-                    Perder();
+                if (elapsedTime > 3100) {
                     cronometro.stop();
+                    Perder();
                 }
             }
 
@@ -173,39 +172,130 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
         startActivity(perder);
     }
 
-    public void GeneracionRandom(){
+    public void GeneracionRandom() {
 
-        rand1 = (int) (random.nextDouble()*10)+1;//Primer valor random A
-        rand2 = (int) (random.nextDouble()*10)+1;//Segundo valor random B
-        rand3 = (int) (random.nextDouble()*3)+1;//Valor random
+        rand1 = (int) (random.nextDouble() * 7) + 3;//Primer valor random A
+        rand2 = (int) (random.nextDouble() * 7) + 3;//Segundo valor random B
+        rand3 = (int) (random.nextDouble() * 7) + 3;//Tercer valor C, Cuando avance en la partida
 
-        realResp = rand1 + rand2;// A+B = Respuesta
+        if(contScore <= 5) {
 
-        Pregunta.setText(rand1 + "+" + rand2); // Objeto Pregunta(TextView) = " A + B "
+            SignoRand = (int) (random.nextDouble() * 2) + 1;//Valor random para seleccionar signo: + o -
+
+            if (SignoRand == 1) {
+                realResp = rand1 + rand2;// A+B = Respuesta
+                Pregunta.setText(rand1 + "+" + rand2); // Objeto Pregunta(TextView) = " A + B "
+                randCase = (int) (random.nextDouble() * 3) + 1;//Valor random
+            } else {
+                if (rand1 > rand2) {
+                    realResp = rand1 - rand2;// A-B = Respuesta
+                    Pregunta.setText(rand1 + "-" + rand2); // Objeto Pregunta(TextView) = " A + B "
+                    randCase = (int) (random.nextDouble() * 3) + 4;//Valor random
+                } else
+                    GeneracionRandom();
+            }
+        }
+        else{
+
+            SignoRand = (int) (random.nextDouble() * 4) + 1;
+            randCase = (int) (random.nextDouble() * 3) + 7;
+
+            switch (SignoRand){
+
+                case 1:
+                    realResp = rand1 + rand2 + rand3;//A+B+C = Respuesta
+                    Pregunta.setText(rand1 + "+" + rand2 + "+" + rand3);
+                    break;
+
+                case 2:
+                    if( (rand1+rand2) > rand3) {
+                        realResp = rand1 + rand2 - rand3;//A+B-C = Respuesta
+                        Pregunta.setText(rand1 + "+" + rand2 + "-" + rand3);
+                    }
+                    else
+                        GeneracionRandom();
+
+                    break;
+
+                case 3:
+                    if( (rand1+rand3) > rand2) {
+                        realResp = rand1 - rand2 + rand3;//A-B+C = Respuesta
+                        Pregunta.setText(rand1 + "-" + rand2 + "+" + rand3);
+                    }
+                    else
+                        GeneracionRandom();
+
+                    break;
+            }
+
+        }
 
         //Tercer valor aleatorio elije: en que boton se ecuentra la respuesta
-        switch (rand3){
+        switch (randCase) {
 
             case 1:
                 //Imprecion de respuestas en los botones.
-                Resp1.setText(""+realResp);
-                Resp2.setText("" + (realResp + rand3));
-                Resp3.setText("" + (realResp + (rand3 * 2)));
+                Resp1.setText("" + realResp);
+                Resp2.setText("" + (realResp - 1));
+                Resp3.setText("" + (realResp +  1));
                 break;
 
             case 2:
-                Resp1.setText(""+(realResp+rand3));
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand));
                 Resp2.setText("" + realResp);
-                Resp3.setText("" + (realResp + (rand3 * 2)));
+                Resp3.setText("" + (realResp - (nRand)));
                 break;
 
             case 3:
-                Resp1.setText(""+(realResp+(rand3*2)));
-                Resp2.setText("" + (realResp + rand3));
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand + 1));
+                Resp2.setText("" + (realResp - 1));
+                Resp3.setText("" + realResp);
+                break;
+
+            case 4:
+                Resp1.setText("" + realResp);
+                Resp2.setText("" + (realResp - 1));
+                Resp3.setText("" + (realResp +  1));
+                break;
+
+            case 5:
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand));
+                Resp2.setText("" + realResp);
+                Resp3.setText("" + (realResp - (nRand)));
+                break;
+
+            case 6:
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand + 1));
+                Resp2.setText("" + (realResp - 1));
+                Resp3.setText("" + realResp);
+                break;
+
+            case 7:
+                Resp1.setText("" + realResp);
+                Resp2.setText("" + (realResp - 1));
+                Resp3.setText("" + (realResp +  1));
+                break;
+
+            case 8:
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand));
+                Resp2.setText("" + realResp);
+                Resp3.setText("" + (realResp - (nRand)));
+                break;
+
+            case 9:
+                nRand = (int) (random.nextDouble() * 2) + 1;
+                Resp1.setText("" + (realResp + nRand + 1));
+                Resp2.setText("" + (realResp - 1));
                 Resp3.setText("" + realResp);
                 break;
         }
     }
+
     private void cacheMemory(){
 
         try {

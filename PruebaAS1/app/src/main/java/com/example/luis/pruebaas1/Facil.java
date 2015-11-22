@@ -100,6 +100,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -107,8 +109,6 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
 
             case R.id.Resp2:
@@ -118,6 +118,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -125,8 +127,6 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
 
             case R.id.Resp3:
@@ -136,6 +136,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                     //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
+                    GeneracionRandom();
+                    Cronometro();
                     setScore(contScore);
                     cacheMemory();
                 }
@@ -143,8 +145,6 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
                 else
                     Perder();
 
-                GeneracionRandom();
-                Cronometro();
                 break;
         }
     }
@@ -157,9 +157,9 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedTime = SystemClock.elapsedRealtime() - cronometro.getBase();
-                if (elapsedTime > 5000) {
-                    Perder();
+                if (elapsedTime > 2400) {
                     cronometro.stop();
+                    Perder();
                 }
             }
 

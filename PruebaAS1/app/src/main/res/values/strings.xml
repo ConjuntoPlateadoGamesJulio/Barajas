@@ -2,6 +2,7 @@
     <string name="app_name">2++</string>
 
     <string name="hello_world">Hola mundo!</string>
+    <string name="BestScore">Puntuación Máxima</string>
     <string name="country_prompt">Elige un Idioma</string>
     <string name="Play">Jugar</string>
     <string name="action_settings">Configuracion</string>

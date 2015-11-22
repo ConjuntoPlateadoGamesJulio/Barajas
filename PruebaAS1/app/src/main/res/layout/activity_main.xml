@@ -61,7 +61,7 @@
         android:layout_height="49dp"
         android:text="@string/creditos"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:textSize="26dp"
         style="?android:attr/borderlessButtonStyle"
         android:textColorLink="@color/highlighted_text_material_light"
