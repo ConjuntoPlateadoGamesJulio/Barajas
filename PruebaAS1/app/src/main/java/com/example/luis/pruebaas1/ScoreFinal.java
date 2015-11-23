@@ -22,6 +22,7 @@ public class ScoreFinal extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_score);
+        hideStatusBar();
         score = (TextView) findViewById(R.id.scoreFinal2);
         bestScore = (TextView) findViewById(R.id.bestScore);
         bala1 = (ImageView) findViewById(R.id.bala1);
@@ -88,11 +89,19 @@ public class ScoreFinal extends ActionBarActivity {
                 }
                 if (elapsedTime > 1650) {
                     bala3.setVisibility(View.VISIBLE);
-                    cronometro.stop();
                     mediaPlayer.stop();
+                    cronometro.stop();
                 }
             }
 
         });
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
     }
 }

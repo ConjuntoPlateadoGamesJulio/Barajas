@@ -49,22 +49,21 @@
 
     <ImageButton
         android:id="@+id/settings_button"
-        android:layout_marginTop="10dp"
-        android:layout_width="116dp"
-        android:layout_height="110dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/settings_image"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/abc_search_url_text_normal"/>
     <Button
         android:id="@+id/credits_button"
-        android:layout_width="149dp"
+        android:layout_width="110dp"
         android:layout_height="49dp"
         android:text="@string/creditos"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:textSize="26dp"
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
         style="?android:attr/borderlessButtonStyle"
-        android:textColorLink="@color/highlighted_text_material_light"
         android:textColor="#e2101193"
         android:textStyle="bold"
         />

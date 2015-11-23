@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.View;
 
 /**
  * Created by Carlos on 10/11/2015.
@@ -13,6 +14,7 @@ public class Creditos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
+        hideStatusBar();
         titleActivity();
 
     }
@@ -24,6 +26,14 @@ public class Creditos extends AppCompatActivity {
     }
     private  void titleActivity(){
         this.setTitle(getResources().getString(R.string.creditos));
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
     }
 
 }

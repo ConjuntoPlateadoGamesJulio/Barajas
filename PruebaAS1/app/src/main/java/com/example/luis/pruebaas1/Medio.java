@@ -37,7 +37,7 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medio);
-
+        hideStatusBar();
         cronometro = (Chronometer) findViewById(R.id.chronometer);
 
         Pregunta = (TextView) findViewById(R.id.Pregunta);
@@ -167,7 +167,7 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
         cacheMemory();
         finish();
         Intent perder = new Intent(Medio.this,ScoreFinal.class);
-        perder.putExtra("BestScore",bestScore);
+        perder.putExtra("BestScore", bestScore);
         perder.putExtra("Score", getScore());
         startActivity(perder);
     }
@@ -326,5 +326,13 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
     }
     public void setScore(int score){
         this.score = score;
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
     }
 }

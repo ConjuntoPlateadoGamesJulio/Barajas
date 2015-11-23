@@ -23,7 +23,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel);
         titleActivity();
-
+        hideStatusBar();
         facil = (ImageButton) findViewById(R.id.buttonFacil);
         medio = (ImageButton) findViewById(R.id.buttonMedio);
         dificil = (ImageButton) findViewById(R.id.buttonDificil);
@@ -88,7 +88,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
 
             setScoreFacil(facilScore);
             //Toast.makeText(getApplicationContext(), "score: " + getScoreFacil(), Toast.LENGTH_SHORT).show();
-            if (facilScore>=10){
+            if (facilScore>=1){
                 medio.setEnabled(true);
             }
         }
@@ -103,7 +103,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             medioScore = isr.read();
             //Toast.makeText(getApplicationContext(), "score: " + medioScore, Toast.LENGTH_SHORT).show();
             setScoreMedio(medioScore);
-            if (medioScore>=15){
+            if (medioScore>=2){
                 dificil.setEnabled(true);
             }
 
@@ -142,5 +142,13 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
     }
     public void setScoreDificil(int score){
         this.bestDificil = score;
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
     }
 }

@@ -2,9 +2,12 @@ package com.example.luis.pruebaas1;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -22,15 +31,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton boton;
     ImageButton boton2,cerrar;
     Button boton3;
+    Locale myLocale;
     EditText text;
     MediaPlayer mediaPlayer;
+    int primera = 0;
+    String nameFile = "lenguaje.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //hideStatusBar(); // muestra la aplicacion en pantalla completa
         setContentView(R.layout.activity_main);
+        hideStatusBar();
         titleActivity();
+        primera = 0;
+        if (primera == 0) {
+            lenguajePosicion();
+            setContentView(R.layout.activity_main);
+            primera = 7;
+        }
         //mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.sound);
         //mediaPlayer.start();
         //Igualacion de objeto Java con Objeto Xml
@@ -109,5 +127,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
             decorView.setSystemUiVisibility(uiOptions);
         }catch (NullPointerException e){}
+    }int posicionLenguaje = 1;
+
+    public void lenguajePosicion(){
+        try {
+            FileInputStream fis = openFileInput(nameFile);
+            InputStreamReader isr = new InputStreamReader(fis);
+            posicionLenguaje = isr.read();
+            //Toast.makeText(getApplication(), "" + posicionLenguaje, Toast.LENGTH_SHORT).show();
+            if (posicionLenguaje == 1){
+                setLocale("");
+            }
+            if (posicionLenguaje == 2){
+                setLocale("fr");
+            }
+            if (posicionLenguaje == 3){
+                setLocale("en");
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void setLocale(String lang) {
+        myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        if (primera == 7) {
+            Intent refresh = new Intent(this, MainActivity.class);
+            primera = 9;
+            startActivity(refresh);
+        }
     }
 }

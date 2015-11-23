@@ -39,6 +39,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facil);
+        hideStatusBar();
         titleActivity();
         //Igualacion de objeto Java con Objeto Xml
         cronometro = (Chronometer) findViewById(R.id.chronometer);
@@ -171,8 +172,8 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         cacheMemory();
         finish();
         Intent perder = new Intent(Facil.this,ScoreFinal.class);
-        perder.putExtra("BestScore",bestScore);
-        perder.putExtra("Score",getScore());
+        perder.putExtra("BestScore", bestScore);
+        perder.putExtra("Score", getScore());
         startActivity(perder);
     }
 
@@ -279,6 +280,14 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
 
     public void setScore(int score){
         this.score = score;
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
     }
 }
 //Fin :3

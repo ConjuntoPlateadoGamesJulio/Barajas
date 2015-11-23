@@ -27,7 +27,11 @@ import android.widget.ExpandableListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Locale;
 
 
@@ -46,11 +50,14 @@ public class Configuracion extends AppCompatActivity {
     Locale myLocale;
     private SharedPreferences prefs;
     private int progress = 0;
+    int posicion = 0;
+    String nameFile = "lenguaje.txt";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         initializeVariable();
+        hideStatusBar();
         // Inicializa funciones de audio
         //mediaPlayer = MediaPlayer.create(Configuracion.this,R.raw.sound);
         //mediaPlayer.start();
@@ -138,6 +145,15 @@ public class Configuracion extends AppCompatActivity {
     }
     // recibe el lenguaje los cambia en Resources
     public void setLocale(String lang) {
+        if (lang == ""){
+            setScore(1);
+        }
+        if (lang == "fr"){
+            setScore(2);
+        }
+        if (lang == "en"){
+            setScore(3);
+        }
         myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
         Resources res = getResources();
@@ -146,8 +162,8 @@ public class Configuracion extends AppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         Intent refresh = new Intent(this, Configuracion.class);
+        cacheMemory();
         startActivity(refresh);
-
     }
     // checkbutton
     private void chekBoxVolume(){
@@ -197,6 +213,36 @@ public class Configuracion extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
         return true;
+    }
+    private void hideStatusBar(){
+        try {
+            View decorView = getWindow().getDecorView();
+// Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }catch (NullPointerException e){}
+    }
+    private void cacheMemory(){
+
+        try {
+            FileOutputStream fos = openFileOutput(nameFile, Context.MODE_PRIVATE);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            posicion = getScore();
+            //Toast.makeText(getApplication(),""+posicion,Toast.LENGTH_SHORT).show();
+            osw.write(posicion);
+            osw.flush();
+            osw.close();
+
+        }
+        catch (IOException e){}
+    }
+
+    public int getScore(){
+        return posicion;
+    }
+
+    public void setScore(int posicion){
+        this.posicion = posicion;
     }
 }
 
