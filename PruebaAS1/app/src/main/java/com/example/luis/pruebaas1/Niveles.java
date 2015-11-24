@@ -54,7 +54,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.buttonMedio:
-                if (facilScore  < 3){
+                if (facilScore  < 20){
                     Toast.makeText(getApplicationContext(), mensajeMedio, Toast.LENGTH_SHORT).show();
                 }else{
                 Intent medio = new Intent(Niveles.this,Medio.class);
@@ -63,7 +63,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.buttonDificil:
-                if (medioScore < 5){
+                if (medioScore < 30){
                     Toast.makeText(getApplicationContext(), mensajeDificil, Toast.LENGTH_SHORT).show();
                 }else{
                 Intent dificil = new Intent(Niveles.this,Dificil.class);
@@ -93,10 +93,6 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             //Toast.makeText(getApplicationContext(), "score: " + facilScore, Toast.LENGTH_SHORT).show();
 
             setScoreFacil(facilScore);
-            //Toast.makeText(getApplicationContext(), "score: " + getScoreFacil(), Toast.LENGTH_SHORT).show();
-            if (facilScore>=3){
-                medio.setEnabled(true);
-            }
         }
         catch (IOException e){
             e.printStackTrace();
@@ -110,9 +106,6 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             medioScore = isr.read();
             //Toast.makeText(getApplicationContext(), "score: " + medioScore, Toast.LENGTH_SHORT).show();
             setScoreMedio(medioScore);
-            if (medioScore>=5){
-                dificil.setEnabled(true);
-            }
         }
         catch (IOException e){
             e.printStackTrace();

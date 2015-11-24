@@ -16,6 +16,8 @@
     <string name="facil">Easy</string>
     <string name="medio">Medium</string>
     <string name="dificl">Hard</string>
+    <string name="bloqueadoMedio">Locked Get 20 points in Easy</string>
+    <string name="bloqueadoDificil">Locked Get 30 points in Medium </string>
     <string-array name="country_arrays">
         <item>Choose a Lenguage</item>
         <item>Spanish</item>

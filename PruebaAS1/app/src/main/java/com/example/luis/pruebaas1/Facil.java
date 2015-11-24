@@ -45,7 +45,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         titleActivity();
         //Igualacion de objeto Java con Objeto Xml
         cronometro = (Chronometer) findViewById(R.id.chronometer);
-        facilM = MediaPlayer.create(Facil.this, R.raw.facil);
+        //facilM = MediaPlayer.create(Facil.this, R.raw.facil);
         Pregunta = (TextView) findViewById(R.id.Pregunta);
         Score = (TextView) findViewById(R.id.Score);
         Tiempo = (TextView) findViewById(R.id.Tiempo);
@@ -63,7 +63,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         if(Unavez){
             GeneracionRandom();
             Cronometro();
-            facilM.start();
+            //facilM.start();
             Unavez = false;
         }
 
@@ -177,7 +177,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         Intent perder = new Intent(Facil.this,ScoreFinal.class);
         perder.putExtra("BestScore", bestScore);
         perder.putExtra("Score", getScore());
-        facilM.stop();
+        //facilM.stop();
         startActivity(perder);
     }
 

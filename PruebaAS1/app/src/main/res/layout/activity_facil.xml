@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,36 +14,52 @@
         android:id="@+id/Score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"/>
+        android:layout_marginLeft="300dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/score"
-        android:layout_marginLeft="280dp"/>
+        android:layout_marginLeft="280dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        />
 
     <TextView
         android:id="@+id/Pregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="30dp"
+        />
 
     <Button
         android:id="@+id/Resp1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/button_text"
+        android:background="@drawable/boton_facil"
         />
 
     <Button
         android:id="@+id/Resp2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/button_text"
+        android:background="@drawable/boton_facil"
         />
 
     <Button
         android:id="@+id/Resp3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/button_text"
+        android:background="@drawable/boton_facil"
         />
 
     <TextView
@@ -50,12 +67,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:textStyle="bold"
+        android:textColor="#000"
         />
 
     <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="30dp"
+        />
 
 </LinearLayout>

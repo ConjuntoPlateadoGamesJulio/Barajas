@@ -26,7 +26,7 @@
     <string name="title_activity_dificil">dificil</string>
     <string name="title_activity_final_score">Puntucacion Final</string>
     <string name="bloqueadoMedio">Bloqueado
-                                Consigue 3 puntos en Facil</string>
+                                Consigue 20 puntos en Facil</string>
     <string name="bloqueadoDificil">Bloqueado
-                                Consigue 5 puntos en Medio</string>
+                                Consigue 30 puntos en Medio</string>
 </resources>

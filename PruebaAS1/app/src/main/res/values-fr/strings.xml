@@ -1,7 +1,6 @@
 ﻿<resources>
     <string name="app_name">2++</string>
 
-    <string name="hello_world">Bonjour le monde!</string>
     <string name="BestScore">Meilleur But</string>
     <string name="country_prompt">Choisissez une Lenguage</string>
     <string name="Play">Joue</string>
@@ -18,6 +17,10 @@
     <string name="facil">Aisé</string>
     <string name="medio">Moyen</string>
     <string name="dificl">Difficile</string>
+    <string name="bloqueadoMedio">Fermé à clef
+                                    Obtenez 20 points en Aisé</string>
+    <string name="bloqueadoDificil">Fermé à clef
+                                    Obtenez 30 points en Moyen</string>
     <string-array name="country_arrays">
         <item>Choisissez une Lenguage</item>
         <item>Espagnol</item>
