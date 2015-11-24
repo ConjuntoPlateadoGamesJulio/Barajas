@@ -1,18 +1,14 @@
 <resources>
     <string name="app_name">2++</string>
-
-    <string name="hello_world">Hola mundo!</string>
     <string name="BestScore">Puntuación Máxima</string>
     <string name="country_prompt">Elige un Idioma</string>
     <string name="Play">Jugar</string>
     <string name="action_settings">Configuracion</string>
     <string name="configuracion">Configuracion</string>
-    <string name="title_activity_second">SegundaActividad</string>
     <string name="score">Puntos</string>
     <string name="sonido">SONIDO</string>
     <string name="volumen">Volumen   </string>
     <string name="lenguaje">LENGUAJE</string>
-    <string name="Idioma">Idioma       </string>
     <string name="atras">Regresar</string>
     <string name="creditos">Créditos</string>
     <string name="nivel">Nivel</string>
@@ -27,5 +23,5 @@
     </string-array>
     <string name="title_activity_medio">Medio</string>
     <string name="title_activity_dificil">dificil</string>
-    <string name="title_activity_final_score">FinalScore</string>
+    <string name="title_activity_final_score">Puntucacion Final</string>
 </resources>

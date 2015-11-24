@@ -2,6 +2,7 @@ package com.example.luis.pruebaas1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
     Boolean Unavez = true;
     int score =0,bestScore = 0;
     String nameFile = "facilScore.txt";
+    MediaPlayer facilM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         titleActivity();
         //Igualacion de objeto Java con Objeto Xml
         cronometro = (Chronometer) findViewById(R.id.chronometer);
-
+        facilM = MediaPlayer.create(Facil.this, R.raw.facil);
         Pregunta = (TextView) findViewById(R.id.Pregunta);
         Score = (TextView) findViewById(R.id.Score);
         Tiempo = (TextView) findViewById(R.id.Tiempo);
@@ -61,6 +63,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         if(Unavez){
             GeneracionRandom();
             Cronometro();
+            facilM.start();
             Unavez = false;
         }
 
@@ -174,6 +177,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
         Intent perder = new Intent(Facil.this,ScoreFinal.class);
         perder.putExtra("BestScore", bestScore);
         perder.putExtra("Score", getScore());
+        facilM.stop();
         startActivity(perder);
     }
 
@@ -245,7 +249,7 @@ public class Facil extends AppCompatActivity implements View.OnClickListener {
     }
 
     private  void titleActivity(){
-        this.setTitle(getResources().getString(R.string.title_activity_second));
+        this.setTitle(getResources().getString(R.string.facil));
     }
 
     private void cacheMemory(){

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -88,7 +89,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
 
             setScoreFacil(facilScore);
             //Toast.makeText(getApplicationContext(), "score: " + getScoreFacil(), Toast.LENGTH_SHORT).show();
-            if (facilScore>=1){
+            if (facilScore>=3){
                 medio.setEnabled(true);
             }
         }
@@ -103,11 +104,9 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             medioScore = isr.read();
             //Toast.makeText(getApplicationContext(), "score: " + medioScore, Toast.LENGTH_SHORT).show();
             setScoreMedio(medioScore);
-            if (medioScore>=2){
+            if (medioScore>=5){
                 dificil.setEnabled(true);
             }
-
-
         }
         catch (IOException e){
             e.printStackTrace();

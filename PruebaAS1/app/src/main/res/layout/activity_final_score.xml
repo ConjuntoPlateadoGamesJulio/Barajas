@@ -108,5 +108,13 @@
         android:id="@+id/chronometer"
         android:visibility="invisible"
         android:layout_gravity="center_horizontal" />
+    <ImageButton
+        android:id="@+id/buttonBack2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/back_button"
+        android:layout_alignBottom="@+id/bala3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

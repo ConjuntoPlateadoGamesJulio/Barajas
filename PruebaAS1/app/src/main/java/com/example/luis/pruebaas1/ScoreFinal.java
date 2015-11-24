@@ -1,22 +1,26 @@
 package com.example.luis.pruebaas1;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class ScoreFinal extends ActionBarActivity {
+public class ScoreFinal extends AppCompatActivity implements View.OnClickListener {
     TextView score, bestScore;
     int bScore = 0,score2 = 0;
     ImageView bala1,bala2,bala3,bala4;
     Chronometer cronometro ;
+    ImageButton back;
     private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class ScoreFinal extends ActionBarActivity {
         bala2 = (ImageView) findViewById(R.id.bala2);
         bala3 = (ImageView) findViewById(R.id.bala3);
         bala4 = (ImageView) findViewById(R.id.bala4);
+        back = (ImageButton) findViewById(R.id.buttonBack2);
+        back.setOnClickListener(this);
         bala4.setVisibility(View.INVISIBLE);
         bala1.setVisibility(View.INVISIBLE);
         bala2.setVisibility(View.INVISIBLE);
@@ -103,5 +109,16 @@ public class ScoreFinal extends ActionBarActivity {
             int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
             decorView.setSystemUiVisibility(uiOptions);
         }catch (NullPointerException e){}
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonBack2:
+                finish();
+                Intent dificil = new Intent(ScoreFinal.this,Niveles.class);
+                startActivity(dificil);
+                break;
+        }
     }
 }

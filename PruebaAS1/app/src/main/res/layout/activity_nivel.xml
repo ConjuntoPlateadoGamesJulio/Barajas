@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/fondo_level"
+    >
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:id="@+id/buttonFacil"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/facil_imagen" />
@@ -18,7 +20,11 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/facil"
         android:id="@+id/textViewfacil"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="20dp"
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -34,7 +40,11 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/medio"
         android:id="@+id/textViewMedio"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="20dp"
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -51,14 +61,19 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/dificl"
         android:id="@+id/textViewDificil"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="20dp"
+        />
 
     <ImageButton
         android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/back_button"
         />
+
 </LinearLayout>

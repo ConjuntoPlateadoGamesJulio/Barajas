@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Esto también
             case R.id.settings_button:
-               // Toast.makeText(getApplicationContext(),R.string.Pao,Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(),R.string.Pao,Toast.LENGTH_SHORT).show();
                 Intent settings = new Intent(MainActivity.this,Configuracion.class);
                 startActivity(settings);
                 break;

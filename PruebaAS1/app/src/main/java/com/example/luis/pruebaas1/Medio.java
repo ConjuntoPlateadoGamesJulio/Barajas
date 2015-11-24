@@ -92,7 +92,7 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 //Presionó el  boton 1
                 if(randCase == 1 || randCase == 4 || randCase == 7) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText("" + contScore);
                     GeneracionRandom();
@@ -110,7 +110,7 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 //Presionó el  boton 2
                 if(randCase == 2 || randCase == 5 || randCase == 8) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText("" + contScore);
                     GeneracionRandom();
@@ -128,7 +128,7 @@ public class Medio extends AppCompatActivity implements View.OnClickListener{
                 //Presionó el  boton 3
                 if(randCase == 3 || randCase == 6 || randCase == 9) {
                     //La respuesta era correcta
-                    Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Respuesta correcta", Toast.LENGTH_SHORT).show();
                     contScore++;
                     Score.setText(""+ contScore);
                     GeneracionRandom();

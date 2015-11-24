@@ -7,7 +7,6 @@
     <string name="Play">Joue</string>
     <string name="action_settings">Paramètres</string>
     <string name="configuracion">Paramètres</string>
-    <string name="title_activity_second">SecondActivity2</string>
     <string name="score">But</string>
     <string name="sonido">Du son</string>
     <string name="volumen">Le volume</string>
@@ -25,4 +24,7 @@
         <item>Français</item>
         <item>Anglais</item>
     </string-array>
+    <string name="title_activity_medio">Medio</string>
+    <string name="title_activity_dificil">dificil</string>
+    <string name="title_activity_final_score">Score Final</string>
 </resources>
