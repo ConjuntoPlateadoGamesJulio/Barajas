@@ -9,6 +9,7 @@
     <string name="sonido">SONIDO</string>
     <string name="volumen">Volumen   </string>
     <string name="lenguaje">LENGUAJE</string>
+    <string name="Idioma">Idioma</string>
     <string name="atras">Regresar</string>
     <string name="creditos">Créditos</string>
     <string name="nivel">Nivel</string>
@@ -24,4 +25,8 @@
     <string name="title_activity_medio">Medio</string>
     <string name="title_activity_dificil">dificil</string>
     <string name="title_activity_final_score">Puntucacion Final</string>
+    <string name="bloqueadoMedio">Bloqueado
+                                Consigue 3 puntos en Facil</string>
+    <string name="bloqueadoDificil">Bloqueado
+                                Consigue 5 puntos en Medio</string>
 </resources>

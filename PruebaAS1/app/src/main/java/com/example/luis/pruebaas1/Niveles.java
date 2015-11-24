@@ -19,12 +19,15 @@ import java.io.InputStreamReader;
 public class Niveles extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton facil,medio,dificil,back;
-
+    String mensajeMedio = "";
+    String mensajeDificil = "";
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel);
         titleActivity();
         hideStatusBar();
+        mensajeMedio = getApplicationContext().getString(R.string.bloqueadoMedio);
+        mensajeDificil = getApplicationContext().getString(R.string.bloqueadoDificil);
         facil = (ImageButton) findViewById(R.id.buttonFacil);
         medio = (ImageButton) findViewById(R.id.buttonMedio);
         dificil = (ImageButton) findViewById(R.id.buttonDificil);
@@ -34,8 +37,6 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
         medio.setOnClickListener(this);
         dificil.setOnClickListener(this);
         back.setOnClickListener(this);
-        medio.setEnabled(false);
-        dificil.setEnabled(false);
         buttonEnabledFacil();
         buttonEnabledMedio();
         buttonEnabledDificil();
@@ -53,17 +54,21 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.buttonMedio:
-                finish();
+                if (facilScore  < 3){
+                    Toast.makeText(getApplicationContext(), mensajeMedio, Toast.LENGTH_SHORT).show();
+                }else{
                 Intent medio = new Intent(Niveles.this,Medio.class);
                 medio.putExtra("MedioScore",getScoreMedio());
-                startActivity(medio);
+                startActivity(medio);}
                 break;
 
             case R.id.buttonDificil:
-                finish();
+                if (medioScore < 5){
+                    Toast.makeText(getApplicationContext(), mensajeDificil, Toast.LENGTH_SHORT).show();
+                }else{
                 Intent dificil = new Intent(Niveles.this,Dificil.class);
                 dificil.putExtra("DificilScore",getScoreDificil());
-                startActivity(dificil);
+                startActivity(dificil);}
                 break;
 
             case R.id.buttonBack:
@@ -97,6 +102,7 @@ public class Niveles extends AppCompatActivity implements View.OnClickListener{
             e.printStackTrace();
         }
     }
+    boolean m = false;
     public void buttonEnabledMedio(){
         try {
             FileInputStream fis = openFileInput(medioFile);
